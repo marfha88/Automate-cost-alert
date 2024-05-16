@@ -1,16 +1,16 @@
 using './main.bicep'
 
-param subSand01 = '3079be22-73e7-41f2-a5e1-62a312d27daf'
+param submanagement = '1e5cbc27-c885-4f6c-b0a5-d208a6577309'
 param location = 'westeurope'
 param rgName = 'rg-bicep-test'
 param tags = {
   deployment_tool: 'Bicep'
-  environment: 'dev'
+  environment: 'shared'
   owner: 'test'
   risk: 'low'
-  creationdate: '2023-05-03'
-  repo: 'https://github.com/brreg/azure-infrastructure'
-  createdby: 'martin.fahlbeck@crayon.com'
+  creationdate: '2023-05-016'
+  repo: 'https://github.com/marfha88/Automate-cost-alert'
+  createdby: 'marfha88@icloud.com'
 }
 
-param saName = 'rlabsa01'
+param saName = 'saautocostalert01'

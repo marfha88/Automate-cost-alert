@@ -41,10 +41,10 @@ jobs:
         template: ./bicep-deploy/main.bicep
         parameters: ./bicep-deploy/main.bicepparam
         scope: managementgroup
-        managementGroupId: rlab
+        managementGroupId: BRREG
         additionalArguments: "--what-if"
         region: westeurope
-        deploymentName: deploy-bicep-sandbox-01-sp
+        deploymentName: deploy-bicep-auto-whatif
         
     - name: Deployment using ARM deploy
       uses: azure/arm-deploy@v1
@@ -53,6 +53,6 @@ jobs:
         template: ./bicep-deploy/main.bicep
         parameters: ./bicep-deploy/main.bicepparam
         scope: managementgroup
-        managementGroupId: rlab
+        managementGroupId: BRREG
         region: westeurope
-        deploymentName: deploy-bicep-sandbox-01-sp
+        deploymentName: deploy-bicep-auto

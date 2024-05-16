@@ -1,6 +1,6 @@
 targetScope = 'managementGroup'
 
-param subSand01 string
+param submanagement string
 param rgName string
 
 param saName string
@@ -10,7 +10,7 @@ param location string
 param tags object
 
 module rg 'modules/rg.bicep' = {
-  scope: subscription(subSand01)
+  scope: subscription(submanagement)
   name: rgName
   params: {
     location: location
@@ -20,7 +20,7 @@ module rg 'modules/rg.bicep' = {
 }
 
 module sa 'modules/sa.bicep' = {
-  scope: resourceGroup(subSand01, rgName)
+  scope: resourceGroup(submanagement, rgName)
   name: saName
   params: {
     location: location
