@@ -14,3 +14,4 @@ param tags = {
 }
 
 param saName = 'saautocostalert01'
+param aaName = 'aaautocostalert01'
