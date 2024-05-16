@@ -43,3 +43,10 @@ resource automation_account 'Microsoft.Automation/automationAccounts@2022-08-08'
 }
 
 output msiId string = automation_account.identity.principalId
+
+resource runbook 'Microsoft.Automation/automationAccounts/runbooks@2023-11-01' = {
+  name: '${automation_account.id}/deploy-costalert'
+  properties: {
+    runbookType: 'PowerShell72'
+  }
+}
