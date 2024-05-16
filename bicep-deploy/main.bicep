@@ -4,7 +4,7 @@ param submanagement string
 param rgName string
 
 param saName string
-
+param aaName string
 param location string
 
 param tags object
@@ -29,5 +29,18 @@ module sa 'modules/sa.bicep' = {
   }
   dependsOn: [
     rg
+  ]
+}
+
+module aa 'modules/aa.bicep' = {
+  scope: resourceGroup(submanagement, rgName)
+  name: aaName
+  params: {
+    location: location
+    name: saName
+    tags: tags
+  }
+  dependsOn: [
+    sa
   ]
 }
