@@ -29,9 +29,9 @@ module sa 'modules/sa.bicep' = {
     tags: tags
     containerName: containerName
     filenames: [
-      'cost-anomaly-alert.bicep'
-      'deploycost.ps1'
-      'main.bicep'
+      '../../extra-config/cost-anomaly-alert.bicep'
+      '../../extra-config/deploycost.ps1'
+      '../../extra-config/main.bicep'
     ]
   }
   dependsOn: [

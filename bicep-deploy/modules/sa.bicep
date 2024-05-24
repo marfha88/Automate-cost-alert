@@ -50,3 +50,5 @@ resource deploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' = [
     scriptContent: 'echo "upload" > ${filename} && az storage blob upload -f ${filename} -c ${containerName} -n ${filename}'
   }
 }]
+
+
