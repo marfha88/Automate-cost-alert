@@ -45,12 +45,13 @@ resource automation_account 'Microsoft.Automation/automationAccounts@2022-08-08'
 
 output msiId string = automation_account.identity.principalId
 
-/*
+
 resource runbook 'Microsoft.Automation/automationAccounts/runbooks@2023-11-01' = {
-  name: 'deploy/costalert'
+  name: 'Deploy-Cost-Alert'
+  parent: automation_account
   properties: {
     runbookType: 'PowerShell72'
   }
 }
-*/
+
  
