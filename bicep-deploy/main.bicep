@@ -27,6 +27,7 @@ module sa 'modules/sa.bicep' = {
     location: location
     name: saName
     tags: tags
+    containerName: containerName
   }
   dependsOn: [
     rg
