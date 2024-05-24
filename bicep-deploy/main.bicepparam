@@ -16,3 +16,7 @@ param tags = {
 param saName = 'saautocostalert01'
 param aaName = 'aaautocostalert01'
 param containerName = 'costalert'
+
+param subs = [
+  '1e5cbc27-c885-4f6c-b0a5-d208a6577309' // Martin Test sub1
+]

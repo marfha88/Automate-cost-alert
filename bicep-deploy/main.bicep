@@ -7,6 +7,7 @@ param saName string
 param aaName string
 param location string
 param containerName string
+param subs array
 
 param tags object
 
@@ -58,3 +59,12 @@ module rbac 'modules/rbac.bicep' = {
     rg: rgName
   }
 }
+
+module rbac2 'modules/rbac2.bicep' = [for sub in subs: {
+  scope: subscription(sub)
+  name: '${sub}-rbac'
+  params: {
+    automation_accountspid: aa.outputs.msiId
+    sub: sub
+  }
+}]
