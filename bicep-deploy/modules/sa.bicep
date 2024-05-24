@@ -26,11 +26,10 @@ resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@20
 }
 
 @description('Name of the blob as it is stored in the blob container')
-param filename string = 'blob.txt'
+param filenames array
 
-
-resource deploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
-  name: 'deployscript-upload-blob'
+resource deploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' = [for filename in filenames: {
+  name: 'deploymentScript-${filename}'
   location: location
   kind: 'AzureCLI'
   properties: {
@@ -46,11 +45,8 @@ resource deploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
         name: 'AZURE_STORAGE_KEY'
         secureValue: sa.listKeys().keys[0].value
       }
-      {
-        name: 'CONTENT'
-        value: loadTextContent('../../extra-config/deploycost.ps1')
-      }
+
     ]
-    scriptContent: 'echo "$CONTENT" > ${filename} && az storage blob upload -f ${filename} -c ${containerName} -n ${filename}'
+    scriptContent: 'echo "upload" > ${filename} && az storage blob upload -f ${filename} -c ${containerName} -n ${filename}'
   }
-}
+}]
