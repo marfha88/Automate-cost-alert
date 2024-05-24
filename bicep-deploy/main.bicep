@@ -28,6 +28,7 @@ module sa 'modules/sa.bicep' = {
     name: saName
     tags: tags
     containerName: containerName
+    filename: 'deploycosts.ps1'
   }
   dependsOn: [
     rg
