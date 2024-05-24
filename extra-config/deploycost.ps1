@@ -9,12 +9,12 @@ catch {
 
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; Remove-Item .\AzureCLI.msi
 
-$ContainerName = 'bicep'
+$ContainerName = 'costalert'
 
-set-azcontext -Subscription eab82de3-9f21-4b09-b79a-32afe64f302c
+set-azcontext -Subscription 1e5cbc27-c885-4f6c-b0a5-d208a6577309
 
 # Connect-AzAccount
-$Context = New-AzStorageContext -StorageAccountName "saautomatecostalert" -UseConnectedAccount
+$Context = New-AzStorageContext -StorageAccountName "saautocostalert01" -UseConnectedAccount
 
 # Download first blob
 Get-AzStorageBlob -Container $ContainerName -Context $Context |
@@ -27,6 +27,14 @@ $DLBlob1HT = @{
     Context     = $Context
   }
   Get-AzStorageBlobContent @DLBlob1HT
+
+  $DLBlob2HT = @{
+    Blob        = 'main.bicep'
+    Container   = $ContainerName
+    Destination = '.\'
+    Context     = $Context
+  }
+  Get-AzStorageBlobContent @DLBlob2HT
 
 
     az login --identity
