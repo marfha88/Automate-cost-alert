@@ -28,11 +28,9 @@ resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@20
 @description('Name of the blob as it is stored in the blob container')
 param filename string = 'blob.txt'
 
-@description('UTC timestamp used to create distinct deployment scripts for each deployment')
-param utcValue string = utcNow()
 
 resource deploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
-  name: 'deployscript-upload-blob-${utcValue}'
+  name: 'deployscript-upload-blob'
   location: location
   kind: 'AzureCLI'
   properties: {
@@ -50,7 +48,7 @@ resource deploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
       }
       {
         name: 'CONTENT'
-        value: loadTextContent('../extra-config/deploycost.ps1')
+        value: loadTextContent('../../extra-config/deploycost.ps1')
       }
     ]
     scriptContent: 'echo "$CONTENT" > ${filename} && az storage blob upload -f ${filename} -c ${containerName} -n ${filename}'
