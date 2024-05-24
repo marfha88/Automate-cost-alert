@@ -47,4 +47,11 @@ module aa 'modules/aa.bicep' = {
   ]
 }
 
-
+module rbac 'modules/rbac.bicep' = {
+  scope: resourceGroup(submanagement, rgName)
+  name: 'rbac'
+  params: {
+    automation_accountspid: aa.outputs.msiId
+    rg: rgName
+  }
+}
