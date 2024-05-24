@@ -15,6 +15,12 @@ resource sa 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   tags: tags
 }
 
+resource blob 'Microsoft.Storage/storageAccounts/blobServices@2023-04-01' = {
+  name: 'default'
+  parent: sa
+}
+
 resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2022-05-01' = {
-  name: '${sa.name}/default/${containerName}'
+  name: containerName
+  parent: blob
 }
