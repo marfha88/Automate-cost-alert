@@ -49,6 +49,7 @@ output msiId string = automation_account.identity.principalId
 resource runbook 'Microsoft.Automation/automationAccounts/runbooks@2023-11-01' = {
   name: 'Deploy-Cost-Alert'
   parent: automation_account
+  location: location
   properties: {
     runbookType: 'PowerShell72'
   }

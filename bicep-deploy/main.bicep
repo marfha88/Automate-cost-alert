@@ -6,6 +6,7 @@ param rgName string
 param saName string
 param aaName string
 param location string
+param containerName string
 
 param tags object
 
